@@ -14,10 +14,15 @@ module.exports = {
     },
     module: {
         loaders: [{
-            exclude: /node_modules/,
-            test: /\.tsx?$/,
-            loader: 'ts-loader'
-        }]
+                exclude: /node_modules/,
+                test: /\.tsx?$/,
+                loader: 'ts-loader'
+            },
+            {
+                test: /\.json$/,
+                loader: 'json-loader'
+            }
+        ]
     },
     resolve: {
         extensions: ['', '.ts', '.tsx', '.js']
@@ -26,7 +31,7 @@ module.exports = {
 
         // pack common vender files
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor', 
+            name: 'vendor',
             minChunks: Infinity
         }),
 
