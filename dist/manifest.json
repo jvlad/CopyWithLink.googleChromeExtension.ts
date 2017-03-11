@@ -1,12 +1,25 @@
 {
   "manifest_version": 2,
 
-  "name": "Copy With Link",
-  "description": "",
-  "version": "1.0",
+  "name": "Copy with Link",
+  "description": "To copy to clipboard selected text with timestamp and link to the source page.",
+  "version": "1.1.0",
 
   "browser_action": {
-    "default_icon": "icon.ico"
+    "default_icon": "icon.png"
+  },
+  "icons": { "128": "logo.png" },
+
+  "commands": {
+    "CopyWithURL": {
+      "suggested_key": {
+        "default": "Alt+C",
+        "mac": "Alt+C",
+        "chromeos": "Alt+C",
+        "linux": "Alt+C"
+      },
+      "description": "Copy to clipboard with source link"
+    }
   },
 
   "content_scripts": [

@@ -1,26 +1,26 @@
 'use strict';
 
-function composeTimeStamp(date: Date): string {
-    let prefix: string = ""
-    let weekDayName: string = getTodayWeekDayName(date);
-    let monthName: string = geTodayMonthName(date);
-    let monthDay: string = date.getDate().toString();
-    let time: string = date.toLocaleTimeString('en-US', { hour12: false });
-    let timeZoneAbbr: string = getTimeZoneAbbreviation();
-    let year: string = date.getFullYear().toString();
-    return concatWithDelimiter(" ", [prefix, weekDayName, monthName, monthDay, time, timeZoneAbbr, year]);
+function composeTimeStamp(date: Date): String {
+    let prefix: String = ""
+    let weekDayName: String = getTodayWeekDayName(date);
+    let monthName: String = geTodayMonthName(date);
+    let monthDay: String = date.getDate().toString();
+    let time: String = date.toLocaleTimeString('en-US', { hour12: false });
+    let timeZoneAbbr: String = getTimeZoneAbbreviation();
+    let year: String = date.getFullYear().toString();
+    return concatPartsWithDelimiter(" ", [prefix, weekDayName, monthName, monthDay, time, timeZoneAbbr, year]);
 }
 
-function geTodayMonthName(date: Date): string {
+function geTodayMonthName(date: Date): String {
     // let fullNameList: string[] = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-    let shortNameList: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    let shortNameList: String[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     let targetIndex: number = date.getMonth();
     return (shortNameList[targetIndex]);
 }
 
-function getTodayWeekDayName(date: Date): string {
+function getTodayWeekDayName(date: Date): String {
     // let fullNameList: string[] = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    let shortNameList: string[] = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    let shortNameList: String[] = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     let targetIndex: number = date.getDay();
     return (shortNameList[targetIndex]);
 }
@@ -43,20 +43,32 @@ declare var require: NodeRequire;
 
 ////////////////////////////////////////////
 
-function getTimeZoneAbbreviation(): string {
+function getTimeZoneAbbreviation(): String {
     let timezone = require('moment-timezone');
-    let userTimeZone: string = timezone.tz.guess();
+    let userTimeZone: String = timezone.tz.guess();
     return timezone.tz(userTimeZone).zoneAbbr();
 }
 
-function concatWithDelimiter(delimiter: string, stringList: string[]): string {
-    let result: string[] = [];
-    for (var i = 0; i < stringList.length - 1; i++) {
-        result.push(stringList[i]);
-        result.push(delimiter);
+function concatPartsWithDelimiter(delimiter: String, partList: String[]): String {
+    let result: String[] = [];
+    concatNonEmptyPartsAddingDelimiter();
+    appendLastPartWithoutAddingDelimiter();
+    let concatenatedResult: String = result.join("");
+    console.log('concatenatedResult: ' + concatenatedResult);
+    return concatenatedResult;
+
+    function concatNonEmptyPartsAddingDelimiter(){
+        for (var i = 0; i < partList.length - 1; i++) {
+            if(partList[i]){
+                result.push(partList[i]);
+                result.push(delimiter);
+            }
+        }
     }
-    result.push(stringList[stringList.length - 1]);
-    return result.join("");
+
+    function appendLastPartWithoutAddingDelimiter(){
+        result.push(partList[partList.length - 1]);
+    }
 }
 
 export default composeTimeStamp;
