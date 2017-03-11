@@ -7,8 +7,35 @@ chrome.runtime.onMessage.addListener(
     }
 );
 
+function formatTimeStampedTextAndUrl(text: String, sourceURL: String) {
+    let newLineLiteral: String = "  \n    ";
+    let quotationLeadingMark: String = "'";
+    let quotationTrailingMark: String = "'";
+    let timestamp = composeTimeStamp(new Date());
+    let formattedResult =
+        "" + quotationLeadingMark + text + quotationTrailingMark
+        + newLineLiteral + timestamp
+        + newLineLiteral + sourceURL;
+    return formattedResult;
+}
+
+function copyToClipboard(text) {
+    var copyBlock;
+    var copyBlockId = "text-to-copy";
+
+    if (document.getElementById(copyBlockId)) {
+        copyBlock = document.getElementById(copyBlockId);
+    } else {
+        copyBlock = createTextContainer(copyBlockId);
+    }
+
+    copyBlock.value = text;
+    copyBlock.focus();
+    copyBlock.select();
+    document.execCommand('Copy');
+}
+
 chrome.browserAction.onClicked.addListener(function() {
-    // No tabs or host permissions needed
     chrome.tabs.executeScript(null, {
         file: "js/content_script.js"
     });
@@ -29,37 +56,4 @@ function createTextContainer(copyBlockId) {
     var backgroundBodyLastElementChild = document.querySelector("body").lastElementChild;
     backgroundBody.insertBefore(copyBlock, backgroundBodyLastElementChild);
     return copyBlock;
-}
-
-function copyToClipboard(text) {
-    var copyBlock;
-    var copyBlockId = "text-to-copy";
-
-    if (document.getElementById(copyBlockId)) {
-        copyBlock = document.getElementById(copyBlockId);
-    } else {
-        copyBlock = createTextContainer(copyBlockId);
-    }
-
-    copyBlock.value = text;
-    copyBlock.focus();
-    copyBlock.select();
-    document.execCommand('Copy');
-}
-
-function formatTimeStampedTextAndUrl(text: String, sourceURL: String) {
-    let indentationSpace = "    ";
-    let timestamp = composeTimeStamp(new Date());
-    
-    let formattedResult = (
-        "'" + text + "'" + "  \n" 
-        + indentationSpace + timestamp + "\n" 
-        + indentationSpace + sourceURL);
-    console.log(formattedResult);
-    return formattedResult;
-}
-
-function testIfTimestampGenerationWorks() {
-    let timestamp: String = formatTimeStampedTextAndUrl("Selected text sample", "http://sample.com")
-    setTimeout(testIfTimestampGenerationWorks, 1000 * 10);
 }

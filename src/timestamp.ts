@@ -54,7 +54,6 @@ function concatPartsWithDelimiter(delimiter: String, partList: String[]): String
     concatNonEmptyPartsAddingDelimiter();
     appendLastPartWithoutAddingDelimiter();
     let concatenatedResult: String = result.join("");
-    console.log('concatenatedResult: ' + concatenatedResult);
     return concatenatedResult;
 
     function concatNonEmptyPartsAddingDelimiter(){

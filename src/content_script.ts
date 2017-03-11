@@ -6,9 +6,9 @@
 })();
 
 function sendSelectedTextToBackgroundPage(selectedText: String) {
-        chrome.runtime.sendMessage(
-            { selectedText: selectedText }
-            );
+    chrome.runtime.sendMessage(
+        { selectedText: selectedText }
+        );
 }
 
 function grabTextWithSourceURL() {

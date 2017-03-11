@@ -2,7 +2,7 @@
   "manifest_version": 2,
 
   "name": "Copy with Link",
-  "description": "To copy to clipboard selected text with timestamp and link to the source page.",
+  "description": "Copy selected text to clipboard with timestamp and link to the source page.",
   "version": "1.1.0",
 
   "browser_action": {

@@ -11,7 +11,7 @@ module.exports = {
         filename: '[name].js'
     },
     module: {
-        loaders: [{
+        rules: [{
                 exclude: /node_modules/,
                 test: /\.tsx?$/,
                 loader: 'ts-loader'
@@ -23,7 +23,7 @@ module.exports = {
         ]
     },
     resolve: {
-        extensions: ['', '.ts', '.tsx', '.js']
+        extensions: ['.ts', '.tsx', '.js']
     },
     plugins: [
 
@@ -37,6 +37,6 @@ module.exports = {
         new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
 
         // minify
-        // new webpack.optimize.UglifyJsPlugin()
+        new webpack.optimize.UglifyJsPlugin()
     ]
 };

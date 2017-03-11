@@ -1,25 +1,22 @@
 {
-  "name": "chrome-extension-typescript-starter",
-  "version": "1.0.0",
-  "description": "chrome-extension-typescript-starter",
-  "main": "index.js",
+  "name": "copy-with-link-chrome-extension",
+  "version": "1.1.0",
+  "description": "To copy selected text from web to clipboard with timestamp and link to the source page",
   "scripts": {
     "build": "./node_modules/.bin/webpack",
     "watch": "./node_modules/.bin/webpack -w"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Vlad Zamskoi",
+  "license": "MIT",
   "dependencies": {
-    "jquery": "^3.1.1",
-    "moment": "^2.17.0",
     "moment-timezone": "0.5.5"
   },
   "devDependencies": {
     "@types/chrome": "0.0.35",
-    "@types/jquery": "^2.0.34",
-    "json-loader": "^0.5.4",
-    "ts-loader": "^1.2.2",
-    "typescript": "^2.0.10",
-    "webpack": "^1.13.3"
+    "@types/jquery": "2.0.34",
+    "json-loader": "0.5.4",
+    "ts-loader": "1.2.2",
+    "typescript": "2.0.10",
+    "webpack": "2.2.1"
   }
 }
