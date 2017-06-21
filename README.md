@@ -1,14 +1,11 @@
 ![ClipWithURL logotype](dist/logo.png "ClipWithURL logotype") 
 
-# Copy With Link
-Google Chrome Browser extension
+# Copy With Link  
+[Install for Free](https://chrome.google.com/webstore/detail/copy-with-link/gkgjcnhkahjgahklmjmnodpmifkmkcca) this Google Chrome Browser extension
 
 
 ## What does it do
 Copy any text on a web-page **with web-page URL and time stamp** directly to clipboard.
-
-
-## [Install for Free](https://chrome.google.com/webstore/detail/copy-with-link/gkgjcnhkahjgahklmjmnodpmifkmkcca)
 
 
 ## Use it
