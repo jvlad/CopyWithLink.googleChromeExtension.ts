@@ -1,7 +1,7 @@
 ![ClipWithURL logotype](dist/logo.png "ClipWithURL logotype") 
 
 # Copy With Link  
-[Install for Free](https://chrome.google.com/webstore/detail/copy-with-link/gkgjcnhkahjgahklmjmnodpmifkmkcca) this Google Chrome Browser extension
+[Install for free](https://chrome.google.com/webstore/detail/copy-with-link/gkgjcnhkahjgahklmjmnodpmifkmkcca) this Google Chrome Browser extension
 
 
 ## What does it do
