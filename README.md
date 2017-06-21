@@ -45,8 +45,7 @@ in Google Chrome Version 58.0.3029.110 (64-bit)
 * chibat: Typescript for Chrome extensions example  
     <https://github.com/chibat/chrome-extension-typescript-starter>
 
-* Alena Semashko  
-    English Texts Review
+* Alena Semashko: English texts review
 
 
 ## Author
